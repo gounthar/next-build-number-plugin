@@ -1,45 +1,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>plugin</artifactId>
-        <version>4.25</version>
-    </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>4.51</version>
+    <relativePath/>
+  </parent>
 
-    <artifactId>next-build-number</artifactId>
-    <version>${revision}${changelist}</version>
-    <packaging>hpi</packaging>
-    <name>Next Build Number Plugin</name>
+  <artifactId>next-build-number</artifactId>
+  <version>${revision}${changelist}</version>
+  <packaging>hpi</packaging>
+  <name>Next Build Number Plugin</name>
+  <url>https://github.com/jenkinsci/next-build-number-plugin</url>
+  <description>Sets the build number Jenkins will use for a job's next build</description>
+
+  <licenses>
+    <license>
+      <name>MIT license</name>
+      <comments>All source code is under the MIT license.</comments>
+    </license>
+  </licenses>
+
+  <properties>
+    <revision>1.9</revision>
+    <changelist>-SNAPSHOT</changelist>
+    <jenkins.version>2.346.3</jenkins.version>
+  </properties>
+
+  <scm>
+    <connection>scm:git:git://github.com/jenkinsci/next-build-number-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/next-build-number-plugin.git</developerConnection>
     <url>https://github.com/jenkinsci/next-build-number-plugin</url>
-    <description>Sets the build number Jenkins will use for a job's next build</description>
+    <tag>${scmTag}</tag>
+  </scm>
 
-    <licenses>
-        <license>
-            <name>MIT license</name>
-            <comments>All source code is under the MIT license.</comments>
-        </license>
-    </licenses>
-
-    <properties>
-        <revision>1.9</revision>
-        <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.266</jenkins.version>
-        <java.level>8</java.level>
-    </properties>
-
-    <scm>
-        <connection>scm:git:git://github.com/jenkinsci/next-build-number-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:jenkinsci/next-build-number-plugin.git</developerConnection>
-        <url>https://github.com/jenkinsci/next-build-number-plugin</url>
-        <tag>${scmTag}</tag>
-    </scm>
-
-    <developers>
-        <developer>
-            <id>akom</id>
-            <name>Akom</name>
-        </developer>
-    </developers>
+  <developers>
+    <developer>
+      <id>akom</id>
+      <name>Akom</name>
+    </developer>
+  </developers>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-weekly</artifactId>
+        <version>2612.v3d6a_2128c0ef</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -51,13 +62,11 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>branch-api</artifactId>
-            <version>2.0.20.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>matrix-project</artifactId>
-            <version>1.12</version>
             <type>jar</type>
             <optional>true</optional>
         </dependency>
@@ -65,7 +74,6 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-job</artifactId>
-            <version>2.12</version>
             <type>jar</type>
             <optional>true</optional>
         </dependency>
@@ -74,7 +82,6 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>script-security</artifactId>
-            <version>1.56</version>
             <scope>test</scope>
             <optional>true</optional>
         </dependency>
